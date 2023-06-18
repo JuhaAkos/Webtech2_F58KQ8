@@ -1,0 +1,28 @@
+<html>
+  <div class="container">
+    <div class="row pt-2">
+      <div class="col-md-12" style="text-align: center">
+        <h2>Bit Drunk Brit Bank</h2>
+        <h4>Ügyintéző weboldala</h4>
+        <hr>
+      </div>
+    </div>  
+
+    <div class="row">
+        <div class="col-md-4" style="text-align: center"><a routerLink="/">Főoldal</a></div>
+        <div class="col-md-4" style="text-align: center"><a routerLink="/client-list" >Ügyfelek kezelése</a></div>
+        <div class="col-md-4" style="text-align: center"><a routerLink="/client-list/form" >Ügyfél felvétele</a></div>
+    </div>
+    
+    <hr>
+  
+    <div class="container" *ngIf="userloggedin">
+      <router-outlet></router-outlet>
+    </div>
+
+    <div class="container" *ngIf="!userloggedin">
+      <app-login (loginsend)="userLoggedIn()"></app-login>
+    </div>
+
+  </div>
+</html> 

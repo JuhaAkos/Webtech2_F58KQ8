@@ -1,0 +1,54 @@
+<div class="container">
+
+    <div class="row pt-2">
+        <h4>Ügyfélkezelői oldal:</h4>
+        <p></p>
+    </div>
+
+    <p></p>
+
+    <div class="row">        
+
+        <div class="col-md-1"><button class="btn btn-primary" (click)="search()">Keresés</button></div>
+
+        <div class="col-md-5">
+            <input type="text" class="form-control" id="clientinfo" name="clientinfo" placeholder="..." [(ngModel)]="inputValue">
+        </div>
+
+        <div class="col-md-5">
+            <select class="form-select" name="searchSelect" id="searchSelect"  [(ngModel)]="selectedValue">
+                <option value="id">ID</option>
+                <option value="name">Név</option>
+                <option value="phone">Telefonszám</option>
+            </select>
+        </div>
+    </div>
+
+    <p></p>
+
+    <div class="row">
+        <div class="col-md-2">ID</div>        
+        <div class="col-md-2">Vezetéknév</div>
+        <div class="col-md-2">Keresztnév</div>
+
+        <div class="col-md-2">Telefonszám</div>
+
+
+    </div>   
+    
+    <hr>
+
+    <div class="row" *ngFor="let client of selectedClients">
+
+        <div class="col-md-2">{{ client.id }}</div>        
+        <div class="col-md-2">{{ client.lastname }}</div>
+        <div class="col-md-2">{{ client.firstname }}</div>
+        <div class="col-md-2">{{ client.phonenumber }}</div>
+        <div class="col-md-1"><button class="btn btn-primary btn-sm" (click)="deleteClient(client)">Töröl</button></div>
+
+        <div class="col-md-1"><button class="btn btn-primary btn-sm" (click)="navigateToForm(client.id)">Módosít</button></div>
+        
+        <div class="col-md-1"><button class="btn btn-primary btn-sm" (click)="navigateToAccount(client.id)">Számla</button></div>
+
+    </div>    
+</div>

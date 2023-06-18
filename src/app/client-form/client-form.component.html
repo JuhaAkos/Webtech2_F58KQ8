@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row pt-2">
+        <div *ngIf="isNewClient">
+            <h4>Ügyfélfelvevői oldal:</h4>
+        </div>
+        <div *ngIf="!isNewClient">
+            <h4>{{existingclient?.lastname}} {{existingclient?.firstname}} ügyfél adatainak módosítása:</h4>   
+        </div>
+        <p></p>
+    </div>
+
+    <div class="container">
+        <form [formGroup]="clientForm">       
+
+        <div class="row">
+            <div class="col-md-6">
+                <label for="name" class="form-label">Vezetéknév</label>
+                <input type="text" class="form-control" id="lastname" name="lastname" formControlName="lastname">
+            </div>
+            <div class="col-md-6">
+            <label for="name" class="form-label">Keresztnév</label>
+            <input type="text" class="form-control" id="firstname" name="firstname" formControlName="firstname">
+            </div>
+        </div>
+
+        <label for="name" class="form-label">Telefonszám</label>
+        <input type="text" class="form-control" id="phonenumber" name="phonenumber" formControlName="phonenumber">
+
+    </form>
+    </div>
+
+    <p></p>
+
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-6">     
+            <div *ngIf="isNewClient">               
+                <div class="col-md-4"><button class="btn btn-lg btn-primary" (click)="saveClient()">Ügyfél fiók létrehozása</button></div>
+            </div>
+            <div *ngIf="!isNewClient">
+                <div class="col-md-4"><button class="btn btn-lg btn-primary" (click)="saveClient()">Ügyfél fiók módosítása</button></div>
+            </div>   
+
+            
+        </div>        
+    </div>    
+
+</div>   

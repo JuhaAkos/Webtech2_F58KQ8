@@ -1,0 +1,48 @@
+<div class="container">
+    <h4>{{client?.lastname}} {{client?.firstname}} számlái:</h4>
+    
+
+    <div class="row">
+        <div class="col-md-1">ID</div>
+        <div class="col-md-3">Kezdeti egyenleg</div>
+        <div class="col-md-3">Jelenlegi egyenleg</div>
+    </div>
+
+    <div class="row" *ngFor="let account of client?.accounts">
+
+        <div class="col-md-1">{{ account.id }}</div>
+        <div class="col-md-3">{{ account.startingBalance }} Ft.</div>
+        <div class="col-md-3">{{ account.balance }} Ft.</div>
+        <div class="col-md-1"><button class="btn btn-primary btn-sm" (click)="deleteAccount(account)">Törlés</button></div>
+        <div class="col-md-2">
+            <input type="text" class="form-control" id="addmoney" name="addmoney" placeholder="..." [(ngModel)]="inputValue">
+        </div>
+        <div class="col-md-2"><button class="btn btn-primary btn-sm" (click)="addMoney(account)">Pénz feltöltése</button></div>
+        <p></p>
+
+    </div>  
+
+    <p></p>
+    <hr>
+
+    <div class="container">
+        <button class="btn btn-success btn-lg" (click)="openForm()">Számlanyitás</button>
+    </div>
+
+    <hr>
+    <div class="container" *ngIf="newFormOpened">
+
+        <form [formGroup]="accountForm">
+            <label for="name" class="form-label">ID (generálva lesz)</label>
+                <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly>
+            
+            <label for="name" class="form-label">Kezdeti egyenleg</label>
+                <input type="text" class="form-control" id="startingBalance" name="startingBalance" formControlName="startingBalance">
+        </form>
+
+        <p></p>
+        <button class="btn btn-success btn-lg" (click)="createNewAccount()">Számla nyitása</button>
+    </div>
+        
+    
+</div>
