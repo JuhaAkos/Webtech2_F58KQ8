@@ -1,7 +1,3 @@
-3. számú feladat
-
-Banki számlavezetés
-
 Beadandó készítője: 
 
 Juhász Ákos
